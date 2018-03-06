@@ -15,14 +15,16 @@ use yii\widgets\ActiveField;
     <?= Html::Button('Submit',['class' => 'btn btn-primary', 'id' => 'submitButton']) ?>    
 <?php ActiveForm::end() ?>
 
-<script>	
+<script>
+	$(document).ready(function(){	
 	var db = 'master'; // default value
 	var detail = '<?php echo json_encode($detail);?>';
 	var obj = JSON.parse(detail);
 	var details = Object.values(obj);
 
 	$('#location').hide();
-	$('#slave').hide();		
+	$('#slave').hide();
+
 	$('#details-tablename').change(function() {
 		var table = $("#details-tablename").val();
 		alert("You have selected "+table);
@@ -59,7 +61,7 @@ use yii\widgets\ActiveField;
 		}) 
 		location.reload(true);
 	});
-		
+});		
 </script>
 <!-- Values captured  
 details -> to get the details of the slave tables 

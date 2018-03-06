@@ -51,7 +51,7 @@ class DetailsController extends \yii\web\Controller
 		elseif ($postdata['Details']['slave'] == 'jd') {
 			$connection = \Yii::$app->db3;
 			$query = $postdata['Details']['query'];
-			$res = $connection->createCommand($query);
+			$res = $connection->createCommand(mysql_real_escape_string(trim($query)));
 			$users = $res->queryAll();
 			return "success!";
 	
@@ -59,7 +59,7 @@ class DetailsController extends \yii\web\Controller
 		elseif ($postdata['Details']['slave'] == 'madras') {
 			$connection = \Yii::$app->db4;
 			$query = $postdata['Details']['query'];			
-			$res = $connection->createCommand($query);
+			$res = $connection->createCommand(mysql_real_escape_string(trim($query)));
 			$users = $res->queryAll();
 			
 		}
