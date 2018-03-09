@@ -23,14 +23,11 @@ class DetailsController extends \yii\web\Controller
         	'data'=>$data,
         	'detail'=>$detail,
         	]);
-
 	}
-
-
 	public function actionExecute()
 	{				
     	$model = new Details();
-		$model->check();	
+		$model->checkDb();	
 	}		
 }
 

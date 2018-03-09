@@ -10,8 +10,7 @@ use yii\widgets\ActiveField;
  	<?= $form->field($model, 'tablename')->dropDownList(($data),["prompt" => "Select Table"]); ?>
     <div id="slave"><?= $form->field($model,'slave')->dropDownList(["jd"=>"JD","madras"=>"madras"],["prompt"=>"Select"]);?></div> 
     <div id="location"><?= $form->field($model, 'location')->textInput(['readonly' => true, 'value' => 'master']) ?></div> 
-    <?= $form->field($model, 'query')->textArea()->hint('Enter your Query'); ?>
-           
+    <?= $form->field($model, 'query')->textArea(array('rows' => 10, 'cols' => 50))->hint('Enter your Query'); ?>           
     <?= Html::Button('Submit',['class' => 'btn btn-primary', 'id' => 'submitButton']) ?>    
 <?php ActiveForm::end() ?>
 
@@ -24,7 +23,6 @@ use yii\widgets\ActiveField;
 
 	$('#location').hide();
 	$('#slave').hide();
-
 	$('#details-tablename').change(function() {
 		var table = $("#details-tablename").val();
 		alert("You have selected "+table);

@@ -22,6 +22,15 @@ class Details extends \yii\db\ActiveRecord
     public $query;
     public $slave;
 
+     public function rules()
+    {
+        return [
+            // Maximum Length
+            [['tablename', 'location'], 'string', 'max' => 255],
+            // name, email, subject and body are required
+            [['tablename', 'location', 'query'], 'required'],   
+        ];
+    }
 
     public static function tableName()
     {
@@ -39,7 +48,7 @@ class Details extends \yii\db\ActiveRecord
          return $detail;
     }
 
-    public function check()
+    public function checkDb()
     {
         $postdata = $_POST;
         if($postdata['Details']['slave'] == null ) {
@@ -63,20 +72,6 @@ class Details extends \yii\db\ActiveRecord
             $users = $res->queryAll();      
         }
     }
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-
-            // Maximum Length
-            [['tablename', 'location'], 'string', 'max' => 255],
-            // name, email, subject and body are required
-            [['tablename', 'location', 'query'], 'required'],   
-        ];
-    }
-
     /**
      * @inheritdoc
      */
